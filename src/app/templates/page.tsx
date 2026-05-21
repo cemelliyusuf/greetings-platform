@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { FilterState, Category } from '@/types'
 import { SAMPLE_TEMPLATES, filterTemplates, CATEGORIES } from '@/lib/templates'
@@ -9,6 +9,14 @@ import TemplateCard from '@/components/gallery/TemplateCard'
 import { SlidersHorizontal, X } from 'lucide-react'
 
 export default function TemplatesPage() {
+  return (
+    <Suspense>
+      <TemplatesContent />
+    </Suspense>
+  )
+}
+
+function TemplatesContent() {
   const searchParams = useSearchParams()
   const [showFilters, setShowFilters] = useState(false)
   const [filters, setFilters] = useState<FilterState>({
