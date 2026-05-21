@@ -25,29 +25,23 @@ export default function RsvpEventPage() {
   const [form, setForm] = useState({ guest_name: '', guest_email: '', guest_count: '1', status: 'attending' as AttendStatus, message: '' })
 
   useEffect(() => {
-    const events: RsvpEvent[] = JSON.parse(localStorage.getItem('rsvp_events') ?? '[]')
-    const found = events.find(e => e.slug === slug)
-    if (found) setEvent(found)
-
-    const stored: RsvpResponse[] = JSON.parse(localStorage.getItem(`rsvp_responses_${slug}`) ?? '[]')
-    setResponses(stored)
+    fetch(`/api/rsvp/events/${slug}`)
+      .then(r => r.ok ? r.json() : null)
+      .then(data => { if (data) setEvent(data) })
+    fetch(`/api/rsvp/events/${slug}/responses`)
+      .then(r => r.json())
+      .then(setResponses)
   }, [slug])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const response: RsvpResponse = {
-      id: Date.now().toString(),
-      event_id: slug,
-      guest_name: form.guest_name,
-      guest_email: form.guest_email || undefined,
-      guest_count: +form.guest_count,
-      status: form.status,
-      message: form.message || undefined,
-      created_at: new Date().toISOString(),
-    }
-    const updated = [...responses, response]
-    setResponses(updated)
-    localStorage.setItem(`rsvp_responses_${slug}`, JSON.stringify(updated))
+    const res = await fetch(`/api/rsvp/events/${slug}/responses`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...form, guest_count: +form.guest_count }),
+    })
+    const response = await res.json()
+    setResponses(prev => [...prev, response])
     setSubmitted(true)
   }
 

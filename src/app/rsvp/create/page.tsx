@@ -23,16 +23,15 @@ export default function CreateRsvpPage() {
 
   const upd = (k: string, v: string) => setForm(prev => ({ ...prev, [k]: v }))
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Generate slug from title
-    const slug = form.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') + '-' + Date.now()
-    // In production: POST to API and save to Supabase
-    // For now: store in localStorage and redirect to event page
-    const event = { ...form, id: slug, slug, created_at: new Date().toISOString() }
-    const existing = JSON.parse(localStorage.getItem('rsvp_events') ?? '[]')
-    localStorage.setItem('rsvp_events', JSON.stringify([...existing, event]))
-    router.push(`/rsvp/${slug}`)
+    const res = await fetch('/api/rsvp/events', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    })
+    const event = await res.json()
+    router.push(`/rsvp/${event.slug}`)
   }
 
   return (
