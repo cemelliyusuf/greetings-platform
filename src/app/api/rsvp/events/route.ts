@@ -1,17 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server'
-import pool from '@/lib/db'
+import { getSupabase } from '@/lib/supabase'
+
+export const dynamic = 'force-dynamic'
 
 export async function POST(req: NextRequest) {
+  const supabase = getSupabase()
   const body = await req.json()
   const { title, event_date, event_time, location, description, host_name, host_email, max_guests, deadline } = body
 
   const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') + '-' + Date.now()
 
-  const { rows } = await pool.query(
-    `INSERT INTO rsvp_events (slug, title, event_date, event_time, location, description, host_name, host_email, max_guests, deadline)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
-    [slug, title, event_date, event_time || null, location || null, description || null, host_name, host_email, max_guests || null, deadline || null]
-  )
+  const { data, error } = await supabase
+    .from('rsvp_events')
+    .insert({ slug, title, event_date, event_time: event_time || null, location: location || null, description: description || null, host_name, host_email, max_guests: max_guests || null, deadline: deadline || null })
+    .select()
+    .single()
 
-  return NextResponse.json(rows[0], { status: 201 })
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  return NextResponse.json(data, { status: 201 })
 }

@@ -1,30 +1,39 @@
 import { NextRequest, NextResponse } from 'next/server'
-import pool from '@/lib/db'
+import { getSupabase } from '@/lib/supabase'
+
+export const dynamic = 'force-dynamic'
 
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
+  const supabase = getSupabase()
   const { slug } = await params
-  const { rows: events } = await pool.query('SELECT id FROM rsvp_events WHERE slug = $1', [slug])
-  if (!events[0]) return NextResponse.json([], { status: 200 })
+  const { data: event } = await supabase.from('rsvp_events').select('id').eq('slug', slug).single()
+  if (!event) return NextResponse.json([])
+  const eventId = (event as { id: string }).id
 
-  const { rows } = await pool.query(
-    'SELECT * FROM rsvp_responses WHERE event_id = $1 ORDER BY created_at ASC',
-    [events[0].id]
-  )
-  return NextResponse.json(rows)
+  const { data } = await supabase
+    .from('rsvp_responses')
+    .select('*')
+    .eq('event_id', eventId)
+    .order('created_at', { ascending: true })
+
+  return NextResponse.json(data ?? [])
 }
 
 export async function POST(req: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
+  const supabase = getSupabase()
   const { slug } = await params
   const body = await req.json()
-  const { guest_name, guest_email, guest_count, status, message } = body
 
-  const { rows: events } = await pool.query('SELECT id FROM rsvp_events WHERE slug = $1', [slug])
-  if (!events[0]) return NextResponse.json({ error: 'Event not found' }, { status: 404 })
+  const { data: event } = await supabase.from('rsvp_events').select('id').eq('slug', slug).single()
+  if (!event) return NextResponse.json({ error: 'Event not found' }, { status: 404 })
+  const eventId = (event as { id: string }).id
 
-  const { rows } = await pool.query(
-    `INSERT INTO rsvp_responses (event_id, guest_name, guest_email, guest_count, status, message)
-     VALUES ($1,$2,$3,$4,$5,$6) RETURNING *`,
-    [events[0].id, guest_name, guest_email || null, guest_count ?? 1, status, message || null]
-  )
-  return NextResponse.json(rows[0], { status: 201 })
+  const { data, error } = await supabase
+    .from('rsvp_responses')
+    .insert({ event_id: eventId, ...body })
+    .select()
+    .single()
+
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  return NextResponse.json(data, { status: 201 })
 }
