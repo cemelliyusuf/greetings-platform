@@ -1,0 +1,137 @@
+{
+  "nav": {
+    "birthday": "Birthday",
+    "wedding": "Wedding",
+    "baby": "Baby & Kids",
+    "party": "Party",
+    "greeting": "Greeting Cards",
+    "allTemplates": "All Templates",
+    "createFree": "Create Free"
+  },
+  "categories": {
+    "birthday": "Birthday",
+    "wedding": "Wedding",
+    "baby": "Baby & Kids",
+    "party": "Party",
+    "greeting": "Greeting Cards",
+    "holiday": "Holiday",
+    "anniversary": "Anniversary",
+    "graduation": "Graduation"
+  },
+  "home": {
+    "hero": {
+      "title": "Beautiful Invitations &",
+      "titleHighlight": "Greeting Cards",
+      "titleSuffix": "for Every Occasion",
+      "subtitle": "Design stunning cards in minutes. Choose from thousands of free templates, customize with your details, and share instantly.",
+      "browse": "Browse Templates",
+      "scratch": "Start from Scratch"
+    },
+    "byOccasion": "Browse by Occasion",
+    "popular": "Popular Templates",
+    "viewAll": "View all",
+    "howItWorks": "How It Works",
+    "step1Title": "1. Choose & Customize",
+    "step1Desc": "Pick a template and make it yours — change text, colors, fonts, and add photos.",
+    "step2Title": "2. Share Digitally",
+    "step2Desc": "Send via email, text, WhatsApp or post to social media instantly.",
+    "step3Title": "3. Download or Print",
+    "step3Desc": "Download as PNG or PDF. Print at home or at your local print shop."
+  },
+  "templates": {
+    "all": "All Templates",
+    "categoryTitle": "{category} Templates",
+    "available": "{count} designs available",
+    "noResults": "No templates match your filters.",
+    "clearFilters": "Clear filters",
+    "filters": {
+      "clearAll": "Clear all filters ({count})",
+      "category": "Category",
+      "theme": "Theme",
+      "orientation": "Orientation",
+      "portrait": "Portrait",
+      "landscape": "Landscape",
+      "square": "Square",
+      "color": "Color",
+      "features": "Features",
+      "withPhoto": "With photo",
+      "sortBy": "Sort by",
+      "popular": "Most popular",
+      "newest": "Newest"
+    }
+  },
+  "editor": {
+    "text": "Text",
+    "shape": "Shape",
+    "circle": "Circle",
+    "photo": "Photo",
+    "background": "Background",
+    "addRsvp": "Add RSVP",
+    "clickToEdit": "Click an element to edit its properties",
+    "properties": {
+      "positionSize": "Position & Size",
+      "text": "Text",
+      "font": "Font",
+      "size": "Size",
+      "style": "Style",
+      "alignment": "Alignment",
+      "color": "Color",
+      "fillColor": "Fill Color",
+      "stroke": "Stroke",
+      "width": "Width",
+      "height": "Height",
+      "left": "Left",
+      "center": "Center",
+      "right": "Right",
+      "forward": "Move forward",
+      "backward": "Move backward",
+      "delete": "Delete"
+    }
+  },
+  "rsvp": {
+    "create": {
+      "title": "Create RSVP Event",
+      "subtitle": "Collect responses from your guests",
+      "eventTitle": "Event Title",
+      "date": "Date",
+      "time": "Time",
+      "location": "Location",
+      "description": "Description",
+      "descriptionPlaceholder": "Tell your guests more about the event…",
+      "yourName": "Your Name",
+      "yourEmail": "Your Email",
+      "maxGuests": "Max Guests",
+      "noLimit": "No limit",
+      "deadline": "RSVP Deadline",
+      "submit": "Create Event Page"
+    },
+    "event": {
+      "hostedBy": "Hosted by {name}",
+      "guestsAttending": "{count} guests attending",
+      "max": "Max {count}",
+      "willAttend": "Will you attend?",
+      "yes": "Yes, I'll be there!",
+      "no": "Sorry, can't make it",
+      "maybe": "Maybe",
+      "yourName": "Your Name",
+      "email": "Email (optional)",
+      "guestCount": "Number of Guests",
+      "message": "Message (optional)",
+      "messagePlaceholder": "Any message for the host…",
+      "send": "Send Response",
+      "sentTitle": "Response Sent!",
+      "sentAttending": "Great! We'll see you there 🎉",
+      "sentNo": "Sorry you can't make it. Thanks for letting us know.",
+      "sentMaybe": "Thanks for your response!",
+      "editResponse": "Edit my response",
+      "responses": "Responses ({count})",
+      "attending": "✓ Attending",
+      "notAttending": "✗ Not attending",
+      "notFound": "Event not found."
+    }
+  },
+  "common": {
+    "customize": "Customize",
+    "footer": "© 2025 Greetings Platform. Free invitation and card maker."
+  }
+}

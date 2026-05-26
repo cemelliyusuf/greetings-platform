@@ -1,0 +1,137 @@
+{
+  "nav": {
+    "birthday": "Verjaardag",
+    "wedding": "Bruiloft",
+    "baby": "Baby & Kids",
+    "party": "Feest",
+    "greeting": "Wenskaarten",
+    "allTemplates": "Alle Templates",
+    "createFree": "Gratis maken"
+  },
+  "categories": {
+    "birthday": "Verjaardag",
+    "wedding": "Bruiloft",
+    "baby": "Baby & Kids",
+    "party": "Feest",
+    "greeting": "Wenskaarten",
+    "holiday": "Feestdagen",
+    "anniversary": "Jubileum",
+    "graduation": "Afstuderen"
+  },
+  "home": {
+    "hero": {
+      "title": "Prachtige Uitnodigingen &",
+      "titleHighlight": "Wenskaarten",
+      "titleSuffix": "voor elke Gelegenheid",
+      "subtitle": "Ontwerp verbluffende kaarten in minuten. Kies uit duizenden gratis templates, pas aan met jouw details en deel direct.",
+      "browse": "Templates bekijken",
+      "scratch": "Zelf beginnen"
+    },
+    "byOccasion": "Bladeren per gelegenheid",
+    "popular": "Populaire Templates",
+    "viewAll": "Bekijk alles",
+    "howItWorks": "Zo werkt het",
+    "step1Title": "1. Kies & Pas aan",
+    "step1Desc": "Kies een template en maak hem van jou — verander tekst, kleuren, lettertypen en voeg foto's toe.",
+    "step2Title": "2. Deel digitaal",
+    "step2Desc": "Stuur via e-mail, sms, WhatsApp of deel direct op social media.",
+    "step3Title": "3. Download of print",
+    "step3Desc": "Download als PNG of PDF. Print thuis of bij een printwinkel bij jou in de buurt."
+  },
+  "templates": {
+    "all": "Alle Templates",
+    "categoryTitle": "{category} Templates",
+    "available": "{count} ontwerpen beschikbaar",
+    "noResults": "Geen templates komen overeen met je filters.",
+    "clearFilters": "Filters wissen",
+    "filters": {
+      "clearAll": "Alle filters wissen ({count})",
+      "category": "Categorie",
+      "theme": "Thema",
+      "orientation": "Oriëntatie",
+      "portrait": "Staand",
+      "landscape": "Liggend",
+      "square": "Vierkant",
+      "color": "Kleur",
+      "features": "Kenmerken",
+      "withPhoto": "Met foto",
+      "sortBy": "Sorteren op",
+      "popular": "Meest populair",
+      "newest": "Nieuwste"
+    }
+  },
+  "editor": {
+    "text": "Tekst",
+    "shape": "Vorm",
+    "circle": "Cirkel",
+    "photo": "Foto",
+    "background": "Achtergrond",
+    "addRsvp": "RSVP toevoegen",
+    "clickToEdit": "Klik op een element om eigenschappen te bewerken",
+    "properties": {
+      "positionSize": "Positie & Grootte",
+      "text": "Tekst",
+      "font": "Lettertype",
+      "size": "Grootte",
+      "style": "Stijl",
+      "alignment": "Uitlijning",
+      "color": "Kleur",
+      "fillColor": "Vulkleur",
+      "stroke": "Rand",
+      "width": "Breedte",
+      "height": "Hoogte",
+      "left": "Links",
+      "center": "Midden",
+      "right": "Rechts",
+      "forward": "Naar voren",
+      "backward": "Naar achteren",
+      "delete": "Verwijderen"
+    }
+  },
+  "rsvp": {
+    "create": {
+      "title": "RSVP-evenement aanmaken",
+      "subtitle": "Ontvang antwoorden van je gasten",
+      "eventTitle": "Naam evenement",
+      "date": "Datum",
+      "time": "Tijd",
+      "location": "Locatie",
+      "description": "Omschrijving",
+      "descriptionPlaceholder": "Vertel je gasten meer over het evenement…",
+      "yourName": "Jouw naam",
+      "yourEmail": "Jouw e-mailadres",
+      "maxGuests": "Max. gasten",
+      "noLimit": "Geen limiet",
+      "deadline": "RSVP-deadline",
+      "submit": "Evenementpagina aanmaken"
+    },
+    "event": {
+      "hostedBy": "Georganiseerd door {name}",
+      "guestsAttending": "{count} gasten aanwezig",
+      "max": "Max {count}",
+      "willAttend": "Kom je?",
+      "yes": "Ja, ik kom!",
+      "no": "Helaas, ik kan niet",
+      "maybe": "Misschien",
+      "yourName": "Jouw naam",
+      "email": "E-mailadres (optioneel)",
+      "guestCount": "Aantal gasten",
+      "message": "Bericht (optioneel)",
+      "messagePlaceholder": "Een berichtje voor de organisator…",
+      "send": "Antwoord verzenden",
+      "sentTitle": "Antwoord verstuurd!",
+      "sentAttending": "Super! We zien je snel 🎉",
+      "sentNo": "Jammer dat je er niet bij kunt zijn. Bedankt voor het laten weten.",
+      "sentMaybe": "Bedankt voor je antwoord!",
+      "editResponse": "Antwoord aanpassen",
+      "responses": "Antwoorden ({count})",
+      "attending": "✓ Aanwezig",
+      "notAttending": "✗ Afwezig",
+      "notFound": "Evenement niet gevonden."
+    }
+  },
+  "common": {
+    "customize": "Aanpassen",
+    "footer": "© 2025 Greetings Platform. Gratis uitnodigingen en wenskaarten maken."
+  }
+}

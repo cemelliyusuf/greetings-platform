@@ -1,6 +1,7 @@
 'use client'
 
-import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import { Template } from '@/types'
 import { Badge } from '@/components/ui/badge'
 import TemplatePreview from './TemplatePreview'
@@ -11,6 +12,8 @@ interface Props {
 }
 
 export default function TemplateCard({ template }: Props) {
+  const t = useTranslations('common')
+
   return (
     <Link href={`/editor?template=${template.id}`} className="group block">
       <div className="relative rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all hover:-translate-y-0.5">
@@ -34,7 +37,7 @@ export default function TemplateCard({ template }: Props) {
           )}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
             <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white text-gray-900 font-semibold text-sm px-4 py-2 rounded-full shadow">
-              Customize
+              {t('customize')}
             </span>
           </div>
         </div>
@@ -43,16 +46,12 @@ export default function TemplateCard({ template }: Props) {
           <div className="flex items-center justify-between mt-1">
             <div className="flex gap-1">
               {template.color_palette.slice(0, 3).map((color, i) => (
-                <div
-                  key={i}
-                  className="w-3 h-3 rounded-full border border-white shadow-sm"
-                  style={{ backgroundColor: color }}
-                />
+                <div key={i} className="w-3 h-3 rounded-full border border-white shadow-sm" style={{ backgroundColor: color }} />
               ))}
             </div>
             <span className="text-xs text-gray-400 flex items-center gap-0.5">
               <Download className="w-3 h-3" />
-              {template.downloads.toLocaleString()}
+              {template.downloads.toLocaleString('en-US')}
             </span>
           </div>
         </div>

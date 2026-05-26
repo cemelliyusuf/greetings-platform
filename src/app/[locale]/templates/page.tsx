@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { FilterState, Category } from '@/types'
 import { SAMPLE_TEMPLATES, filterTemplates, CATEGORIES } from '@/lib/templates'
 import FilterPanel from '@/components/gallery/FilterPanel'
@@ -18,6 +19,8 @@ export default function TemplatesPage() {
 
 function TemplatesContent() {
   const searchParams = useSearchParams()
+  const t = useTranslations('templates')
+  const tc = useTranslations('categories')
   const [showFilters, setShowFilters] = useState(false)
   const [filters, setFilters] = useState<FilterState>({
     category: searchParams.get('category') as Category | undefined ?? undefined,
@@ -36,20 +39,19 @@ function TemplatesContent() {
     <div className="max-w-7xl mx-auto px-4 py-8">
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900">
-          {activeCategory ? `${activeCategory.icon} ${activeCategory.label} Templates` : 'All Templates'}
+          {activeCategory
+            ? t('categoryTitle', { category: tc(activeCategory.value as Parameters<typeof tc>[0]) })
+            : t('all')}
         </h1>
-        <p className="text-gray-500 mt-1">{results.length} designs available</p>
+        <p className="text-gray-500 mt-1">{t('available', { count: results.length })}</p>
       </div>
 
       <div className="flex gap-8">
-        {/* Desktop filter sidebar */}
         <div className="hidden lg:block w-56 flex-shrink-0">
           <FilterPanel filters={filters} onChange={setFilters} />
         </div>
 
-        {/* Main content */}
         <div className="flex-1 min-w-0">
-          {/* Mobile filter toggle */}
           <div className="lg:hidden mb-4">
             <button
               onClick={() => setShowFilters(!showFilters)}
@@ -68,12 +70,12 @@ function TemplatesContent() {
 
           {results.length === 0 ? (
             <div className="text-center py-20 text-gray-500">
-              <p className="text-lg">No templates match your filters.</p>
+              <p className="text-lg">{t('noResults')}</p>
               <button
                 className="mt-4 text-indigo-600 hover:underline"
                 onClick={() => setFilters({ sort: 'popular' })}
               >
-                Clear filters
+                {t('clearFilters')}
               </button>
             </div>
           ) : (
